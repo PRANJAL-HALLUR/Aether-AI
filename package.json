@@ -1,0 +1,18 @@
+{
+  "name": "aether-ai-chatbot",
+  "version": "1.0.0",
+  "description": "Aether AI - Premium Full-Stack Conversational AI Assistant with Next.js, FastAPI & SSE Streaming",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n \"BACKEND,FRONTEND\" -c \"magenta.bold,cyan.bold\" \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "powershell -Command \"$env:PYTHONPATH='.'; .\\backend\\venv\\Scripts\\python.exe -m uvicorn backend.main:app --host 127.0.0.1 --port 8000 --reload\"",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build:frontend": "npm --prefix frontend run build",
+    "test:backend": "powershell -Command \"$env:PYTHONPATH='.'; .\\backend\\venv\\Scripts\\python.exe -m pytest backend/tests/test_chat.py -v\"",
+    "setup:backend": "powershell -Command \"py -3.13 -m venv backend/venv; .\\backend\\venv\\Scripts\\pip.exe install -r backend/requirements.txt\"",
+    "setup:frontend": "npm --prefix frontend install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
